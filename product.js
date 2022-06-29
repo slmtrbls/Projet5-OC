@@ -14,7 +14,7 @@ function getKanap () {
         })
         .then(async function (resultatAPI) {
             article = await resultatAPI;
-            console.log(article);
+            //console.log(article);
             fillKanapInfoById(article);
         })
         .catch((error) => {
@@ -89,7 +89,6 @@ function addToCart(kanap){
                 couleurProduit: choixCouleur,
                 quantityProduit : Number(choixQuantite),
                 nomProduit: kanap.name,
-                prixProduit :kanap.price,
                 descriptionProduit : kanap.description,
                 imgProduit : kanap.imageUrl
             }

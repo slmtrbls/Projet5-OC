@@ -11,7 +11,7 @@ async function fillSectionHtml(){
             const kanaps = retourAPI;
             for(let kanap in kanaps){
                 //test1 // 
-                console.log(retourAPI[kanap]);
+                //console.log(retourAPI[kanap]);
                 //test1//
 
                 //création html du lien pour chaque produit
@@ -43,7 +43,7 @@ async function fillSectionHtml(){
 
             }
             })
-        .catch(function(error) {
+        .catch(function(error) { // affiche une msg d'erreur dans la console en cas d'erreur avec la requête
             console.log('Il y a eu un problème avec l\'opération fetch: ' );
         });
 }
