@@ -6,13 +6,10 @@ async function getKanapsInfo(){
  }
 
 async function fillSectionHtml(){
-    var result = await getKanapsInfo()
+    var result = await getKanapsInfo()  // récupère les infos grâce à la fonction précédente
         .then( function (retourAPI){
             const kanaps = retourAPI;
-            for(let kanap in kanaps){
-                //test1 // 
-                //console.log(retourAPI[kanap]);
-                //test1//
+            for(let kanap in kanaps){   // pour chaque produit on va réaliser les actions suivantes
 
                 //création html du lien pour chaque produit
                 let productLink = document.createElement("a");

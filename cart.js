@@ -117,9 +117,6 @@ function deleteProduct() { // cette fonction permet d'activer le bouton 'supprim
             let idDelete = produitLocalStorage[j].idProduct;
             let colorDelete = produitLocalStorage[j].couleurProduit;
 
-            console.log(idDelete);
-            console.log(colorDelete);
-
             produitLocalStorage = produitLocalStorage.filter( el => el.idProduct !== idDelete || el.couleurProduit !== colorDelete ); // au click on supprime du localStorage le produit avec l'Id et la Couleur correspondante
             
             localStorage.setItem("produit", JSON.stringify(produitLocalStorage)); // on réinitialise le localStorage
@@ -136,15 +133,13 @@ function deleteProduct() { // cette fonction permet d'activer le bouton 'supprim
 function modifyQuantity() { // cette fonction permet de suivre les modifications des quantités
 
     let quantityInput = document.querySelectorAll('.itemQuantity'); // on s'assure d'étendre la fonction à tous les champs quantité de la page
-    //console.log(quantityInput);
+    
     for(let i = 0; i < quantityInput.length; i++) {
         quantityInput[i].addEventListener('change', function(e) { // à chaque changement
             e.preventDefault();
             let newQuantity = quantityInput[i].value;
             let idProduct = produitLocalStorage[i].idProduct;
             let color = produitLocalStorage[i].couleurProduit;
-
-            //console.log(newQuantity);
 
             const resultfind2 = produitLocalStorage.find(
                 (el) => el.idProduct === idProduct && el.couleurProduit === color
@@ -153,7 +148,6 @@ function modifyQuantity() { // cette fonction permet de suivre les modifications
             if(resultfind2) {
                 produitLocalStorage[i].quantityProduit = newQuantity ; // on modifie la quantité du produit avec l'Id et la couleur souhaités dans le localStorage
                 localStorage.setItem("produit", JSON.stringify(produitLocalStorage)); // on réinitialise le localStorage
-                //console.log(produitLocalStorage[i].quantityProduit);
                 location.reload(); // on rafraîchit la page pour que les changements soient prix en compte 
             }
         })
@@ -230,8 +224,6 @@ let productIds = []
 for (let produit of produitLocalStorage) { // ici on extraie les ids produit en préparation de l'envoi de la commande
     productIds.push(produit.idProduct);
 }
-
-//console.log(productIds);
 
 makeAnOrder();
 

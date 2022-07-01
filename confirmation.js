@@ -1,7 +1,11 @@
 let order = JSON.parse(localStorage.getItem('order')); // On récupère les informations de la commande à partir du local Storage
-//console.log(JSON.stringify(order));
 
+if (!order) {
+    alert('Vous allez être redirigé vers la page d\'accueil');
+            window.location.href = "index.html"; 
+} else {
 fillOrderId();
+}
 
 async function getOrderInfo() { // cette fonction envoie les informations de la commande à l'API via une requête POST 
     

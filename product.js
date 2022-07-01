@@ -1,21 +1,21 @@
 var str = window.location.href ; // on récupère l'url de la page
 var url = new URL(str);
-var idProduct = url.searchParams.get('id');
-//alert(idProduct);
+var idProduct = url.searchParams.get('id'); // on isole l'id du produit à partir de l'url
+
 
 const colorselect = document.querySelector("#colors");
 const quantityselect = document.querySelector("#quantity");
 
 getKanap();
 function getKanap () {
-    fetch("http://localhost:3000/api/products/"+idProduct)
+    fetch("http://localhost:3000/api/products/"+idProduct) // on récupère les informations du produit grâce à son id
         .then((res) => {
             return res.json();
         })
         .then(async function (resultatAPI) {
             article = await resultatAPI;
-            //console.log(article);
-            fillKanapInfoById(article);
+            
+            fillKanapInfoById(article);  // on utilise les informations du produit pour compléter la page
         })
         .catch((error) => {
             console.log("Erreur de la requête API");
@@ -24,7 +24,7 @@ function getKanap () {
 
 
 
-function fillKanapInfoById(kanap) {
+function fillKanapInfoById(kanap) { 
 
     //remplacement du titre de la page
     let itemPageTitle = document.querySelector('title');
@@ -59,8 +59,6 @@ function fillKanapInfoById(kanap) {
 
 }
 
-/*localStorage.clear();
-console.log(localStorage);*/
 
 function addToCart(kanap){
 
@@ -77,12 +75,9 @@ function addToCart(kanap){
         }
 
         else if(quantityselect.value > 0 && quantityselect.value <=100 && quantityselect.value!=0){
-            //recuperation de la couleur
+            //recuperation de la couleur et de la quantité
             let choixCouleur = colorselect.value;
             let choixQuantite = quantityselect.value;
-
-            //alert(choixCouleur);
-            //
 
             let optionsProduit = {
                 idProduct : idProduct,
