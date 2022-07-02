@@ -15,7 +15,7 @@ fillCartInfo();
 
 async function fillCartInfo() { // cette fonction va remplir la page html avec les informations du panier
 
-    if (produitLocalStorage.length === 0) {
+    if (!produitLocalStorage) {
         alert('Votre panier est vide, vous allez être redirigé vers la page d\'accueil') // si le panier est vide on redirige le client vers la page d'accueil
         window.location.href = "index.html";
     } else {
@@ -220,9 +220,11 @@ emailInput.addEventListener('change', function() {
 });
 
 let productIds = []
+if (produitLocalStorage) {
 
 for (let produit of produitLocalStorage) { // ici on extraie les ids produit en préparation de l'envoi de la commande
     productIds.push(produit.idProduct);
+}
 }
 
 makeAnOrder();
